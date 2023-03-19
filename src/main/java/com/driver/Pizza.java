@@ -2,28 +2,46 @@ package com.driver;
 
 public class Pizza {
 
-    private int price;
-    private Boolean isVeg;
+    private int basePrice;
+    private int toppingsPrice;
+    private int paperbagPrice;
     private String bill;
-    private int extraCheese = 70;
-    private int totalPrice = 0;
+    private int totalPrice;
+    private Boolean isVeg;
+    private int extraCheese;
     private boolean isCheeseAdded;
     private boolean isToppingsAdded;
     private boolean isPaperBagAdded;
+    private boolean isBillGenerated;
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
-        // your code goes here
+        if(isVeg)
+        {
+            basePrice=300;
+            toppingsPrice= 70;
+        }
+        else {
+            basePrice=400;
+            toppingsPrice = 120;
+        }
+        extraCheese = 80;
+
+        paperbagPrice = 20;
+
+        isCheeseAdded=false;
+        isToppingsAdded=false;
+        isPaperBagAdded=false;
+        totalPrice=basePrice;
+        bill="Base Price Of The Pizza: "+ basePrice+ "\n";
     }
 
     public int getPrice(){
 
-        price=totalPrice;
-        return this.price;
+        return totalPrice;
     }
 
     public void addExtraCheese(){
-        // your code goes here
         if(!isCheeseAdded)
         {
             totalPrice+=extraCheese;
@@ -32,17 +50,10 @@ public class Pizza {
     }
 
     public void addExtraToppings(){
-        // your code goes here
-        if(!isToppingsAdded && isVeg)
+        if(!isToppingsAdded)
         {
-            totalPrice+=70;
+            totalPrice+=toppingsPrice;
             isToppingsAdded=true;
-        }
-        else if (!isToppingsAdded)
-        {
-            totalPrice+=120;
-            isToppingsAdded=true;
-
         }
     }
 
@@ -50,45 +61,34 @@ public class Pizza {
         // your code goes here
         if(!isPaperBagAdded)
         {
-            totalPrice+=20;
+            totalPrice+=paperbagPrice;
             isPaperBagAdded=true;
         }
     }
 
     public String getBill(){
-        // your code goes here
-        if(isVeg)
+        if(!isBillGenerated)
         {
-            totalPrice+=300;
-            System.out.println("Base Price Of The Pizza: "+ 300);
+//            totalPrice=300;
             if(isCheeseAdded)
             {
-                System.out.println("Extra Cheese Added: "+ 80);
+                bill=bill + "Extra Cheese Added: " + extraCheese  + "\n";
             }
             if(isToppingsAdded)
             {
-                System.out.println("Extra Toppings Added: " + 70);
-                totalPrice+=70;
+                bill= bill + "Extra Toppings Added: " + toppingsPrice + "\n";
             }
-        }
-        else {
-            totalPrice+=400;
-            System.out.println("Base Price Of The Pizza: "+ 400);
-            if(isCheeseAdded)
+            if(isPaperBagAdded)
             {
-                System.out.println("Extra Cheese Added: "+ 80);
+                bill = bill + "Paperbag Added: " + paperbagPrice + "\n";
             }
-            if(isToppingsAdded)
-            {
-                System.out.println("Extra Toppings Added: " + 120);
-                totalPrice+=70;
-            }
+            bill = bill + "Total Price: " + totalPrice + "\n";
+            isBillGenerated=true;
         }
-        if(isPaperBagAdded)
-        {
-            System.out.println("Paperbag Added: "+ 20);
-        }
-        bill="Total Price: ";
-        return bill+totalPrice + "\n";
+//        else
+//        {
+//            return bill;
+//        }
+        return bill;
     }
 }
