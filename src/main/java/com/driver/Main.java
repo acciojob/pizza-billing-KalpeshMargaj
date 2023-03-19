@@ -16,3 +16,15 @@ public class Main {
     System.out.println(p.getBill());
   }
 }
+//Example 1:
+//        Base Price Of The Pizza: 300
+//        Extra Cheese Added: 80
+//        Extra Toppings Added: 70
+//        Paperbag Added: 20
+//        Total Price: 470
+//
+//        Example 2:
+//        Base Price Of The Pizza: 400
+//        Extra Cheese Added: 80
+//        Extra Toppings Added: 120
+//        Total Price: 600
