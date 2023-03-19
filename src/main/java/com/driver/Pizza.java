@@ -18,6 +18,7 @@ public class Pizza {
 
     public int getPrice(){
 
+        price=totalPrice;
         return this.price;
     }
 
@@ -35,10 +36,12 @@ public class Pizza {
         if(!isToppingsAdded && isVeg)
         {
             totalPrice+=70;
+            isToppingsAdded=true;
         }
         else if (!isToppingsAdded)
         {
             totalPrice+=120;
+            isToppingsAdded=true;
 
         }
     }
@@ -85,6 +88,7 @@ public class Pizza {
         {
             System.out.println("Paperbag Added: "+ 20);
         }
-        return "Total Price: "+totalPrice + "\n";
+        bill="Total Price: ";
+        return bill+totalPrice + "\n";
     }
 }
